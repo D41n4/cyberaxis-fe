@@ -1,8 +1,22 @@
+import { getAuthUser } from "api/auth";
+import { getToken } from "api/utils";
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthScreen from "screens/AuthScreen";
 import SignedInScreen from "screens/SignedInScreen";
+import { useAuth } from "state/auth";
 
 function App() {
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (!auth.user && getToken()) {
+      getAuthUser().then((res) => auth.setUser(res.user));
+    }
+  }, [auth]);
+
+  if (!auth.user && getToken()) return null;
+
   return (
     <Routes>
       <Route path="/auth" element={<AuthScreen />} />

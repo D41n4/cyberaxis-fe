@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getAuthHeaders, makeLogout } from "./utils";
 
-export const publicClient = axios.create({
+export const client = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     Accept: "application/json",
@@ -9,22 +9,7 @@ export const publicClient = axios.create({
   },
 });
 
-publicClient.interceptors.response.use(
-  (response) => response,
-  (err) => Promise.reject(err.response?.data)
-);
-
-// ----------------------------------------------------
-
-export const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  },
-});
-
-apiClient.interceptors.request.use((request) => {
+client.interceptors.request.use((request) => {
   const authHeaders = getAuthHeaders();
 
   request.headers = {
@@ -35,7 +20,7 @@ apiClient.interceptors.request.use((request) => {
   return request;
 });
 
-apiClient.interceptors.response.use(
+client.interceptors.response.use(
   (response) => response,
   (err) => {
     if (err.response?.status === 401) {
