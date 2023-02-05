@@ -4,8 +4,7 @@ import { useAuth } from "state/auth";
 import styled from "styled-components";
 
 const Nav = styled.nav`
-  background-color: rgba(0, 0, 0, 0.1);
-  height: 60px;
+  height: 40px;
   padding: 0 30px;
   display: flex;
   align-items: center;
@@ -22,7 +21,7 @@ export function NavBar() {
   return (
     <Nav>
       <Typography className="user-email">{auth.user?.email}</Typography>
-      <Button variant="contained" onClick={makeLogout}>
+      <Button variant="contained" onClick={makeLogout} size="small">
         LOG OUT
       </Button>
     </Nav>
