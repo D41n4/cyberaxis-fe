@@ -1,6 +1,7 @@
+import { NavBar } from "components/NavBar";
 import Spacer from "components/Spacer";
-import { NavBar } from "screens/SignedInScreen/comps";
 import styled from "styled-components";
+import { colors } from "util/theme";
 import { Aside } from "./comps";
 
 const Div = styled.div`
@@ -10,7 +11,7 @@ const Div = styled.div`
   .container {
     flex: 1;
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: ${colors.BACKGROUND};
 
     main {
       max-width: 1200px;

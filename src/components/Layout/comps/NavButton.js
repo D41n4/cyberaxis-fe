@@ -1,17 +1,25 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { colors } from "util/theme";
 
 const Div = styled.div`
   padding: 4px 10px;
   margin-bottom: 10px;
   cursor: pointer;
-
-  &:hover {
-    /* color: red; */
-  }
+  display: flex;
+  align-items: center;
+  color: ${colors.WHITE};
 
   background-color: ${(props) =>
-    props.isActive ? "rgba(0,0,0,0.1)" : "transparent"};
+    props.isActive ? colors.HIGHLIGHT : "transparent"};
+
+  .icon {
+    margin-right: 8px;
+    height: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export function NavButton(props) {
@@ -23,7 +31,8 @@ export function NavButton(props) {
       isActive={location.pathname === props.route}
       onClick={() => navigate(props.route)}
     >
-      {props.label}
+      <div className="icon">{props.icon}</div>
+      <span>{props.label}</span>
     </Div>
   );
 }

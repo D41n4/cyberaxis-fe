@@ -1,5 +1,5 @@
 import { getAuthUser } from "api/auth";
-import { getToken } from "api/utils";
+import { getToken, makeLogout } from "api/utils";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import AuthScreen from "screens/AuthScreen";
@@ -11,7 +11,11 @@ function App() {
 
   useEffect(() => {
     if (!auth.user && getToken()) {
-      getAuthUser().then((res) => auth.setUser(res.user));
+      getAuthUser()
+        .then((res) => auth.setUser(res.user))
+        .catch(() => {
+          makeLogout();
+        });
     }
   }, [auth]);
 
