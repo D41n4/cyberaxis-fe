@@ -30,7 +30,7 @@ export function HashTags() {
       setHashTags(res.hashtags);
       console.log(res);
     });
-  }, [topHashtags]);
+  }, []);
 
   return (
     <Div>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TextField, Button, Typography } from "@mui/material";
 import Spacer from "components/Spacer/Spacer";
 import { makeSignUp } from "api/auth";
-import { passwordErr, passwordRegex } from "../misc";
+import { emailRegex, passwordErr, passwordRegex, userNameRegex } from "../misc";
 import { useAuth } from "state/auth";
 import { setToken } from "api/utils";
 
@@ -15,6 +15,7 @@ const Form = styled.form`
 `;
 
 export const SignUpForm = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -25,30 +26,53 @@ export const SignUpForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    if (passwordRegex.test(password)) {
-      if (password === repeatPassword) {
-        setIsSubmiting(true);
-        makeSignUp({ email, password })
-          .then((res) => {
-            setUser(res.user);
-            setToken(res.token);
-          })
-          .catch((err) => setError(err.message))
-          .finally(() => setIsSubmiting(false));
-      } else {
-        setError("Passwords do not match");
-      }
-    } else {
-      setError(passwordErr);
-      setIsSubmiting(false);
+
+    if (!userNameRegex.test(name)) {
+      setError("Name must contain 2-30 characters, only letters");
+      return;
     }
+
+    if (!emailRegex.test(email)) {
+      setError("Email is not valid");
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      setError(passwordErr);
+      return;
+    }
+
+    if (password !== repeatPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    setIsSubmiting(true);
+    makeSignUp({ name, email, password })
+      .then((res) => {
+        setUser(res.user);
+        setToken(res.token);
+      })
+      .catch((err) => setError(err.message))
+      .finally(() => setIsSubmiting(false));
   };
+
   return (
     <Form onSubmit={handleSubmit}>
       <TextField
         size="small"
+        label="Name"
+        fullWidth
+        required
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <Spacer px={20} />
+      <TextField
+        size="small"
         label="Email"
         type="email"
+        id="outlined-required"
         fullWidth
         required
         value={email}

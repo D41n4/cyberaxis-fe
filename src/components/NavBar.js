@@ -10,7 +10,7 @@ const Nav = styled.nav`
   align-items: center;
   justify-content: flex-end;
 
-  .user-email {
+  .user-name {
     margin-right: 20px;
   }
 `;
@@ -20,7 +20,7 @@ export function NavBar() {
 
   return (
     <Nav>
-      <Typography className="user-email">{auth.user?.email}</Typography>
+      <Typography className="user-name">Welcome, {auth.user?.name}</Typography>
       <Button variant="contained" onClick={makeLogout} size="small">
         LOG OUT
       </Button>

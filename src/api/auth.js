@@ -8,11 +8,11 @@ export const makeLogin = ({ email, password }) => {
   }).then((res) => res.data);
 };
 
-export const makeSignUp = ({ email, password }) => {
+export const makeSignUp = ({ name, email, password }) => {
   return client({
     url: "/auth/signup",
     method: "POST",
-    data: { email, password },
+    data: { name, email, password },
   }).then((res) => res.data);
 };
 

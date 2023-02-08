@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useAuth } from "state/auth";
 import Layout from "components/Layout";
 import HomeScreen from "screens/HomeScreen";
+import SettingsScreen from "screens/SettingsScreen";
 
 function SignedInScreen() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function SignedInScreen() {
     <Layout>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
+        <Route path="/my-account" element={<SettingsScreen />} />
       </Routes>
     </Layout>
   );
