@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import ClearIcon from "@mui/icons-material/Clear";
+import Spacer from "components/Spacer";
 
 const Div = styled.div`
   position: fixed;
@@ -14,17 +16,36 @@ const Div = styled.div`
   justify-content: center;
   .wrapper {
     background-color: white;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     border-radius: 8px;
-    min-width: 600px;
+    min-width: 400px;
     margin: 0 20px;
+
+    .close {
+      display: flex;
+      justify-content: flex-end;
+      .close-btn {
+        cursor: pointer;
+      }
+    }
   }
 `;
 
-const Base = () => {
+const Base = (props) => {
   return (
-    <Div>
-      <div className="wrapper"></div>
+    <Div onClick={props.onClose}>
+      <div
+        className="wrapper"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <div className="close">
+          <ClearIcon className="close-btn" onClick={props.onClose} />
+        </div>
+        <Spacer px={20} />
+        {props.children}
+      </div>
     </Div>
   );
 };

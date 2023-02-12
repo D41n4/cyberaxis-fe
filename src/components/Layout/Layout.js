@@ -14,7 +14,7 @@ const Div = styled.div`
     background-color: ${colors.BACKGROUND};
 
     main {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
       background-color: white;
       padding: 10px;

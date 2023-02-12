@@ -15,7 +15,7 @@ root.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AuthProvider>
-        <ToastContainer />
+        <ToastContainer hideProgressBar theme="colored" position="top-center" />
         <App />
       </AuthProvider>
     </ThemeProvider>

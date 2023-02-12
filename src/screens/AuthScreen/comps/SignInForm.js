@@ -50,6 +50,7 @@ export const SignInForm = () => {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        InputLabelProps={{ shrink: true }}
       />
       <Spacer px={20} />
       <TextField
@@ -60,6 +61,7 @@ export const SignInForm = () => {
         required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        InputLabelProps={{ shrink: true }}
       />
       {error && (
         <>

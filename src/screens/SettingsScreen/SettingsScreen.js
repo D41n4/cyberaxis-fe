@@ -6,7 +6,6 @@ import { userNameRegex } from "screens/AuthScreen/misc";
 import { useAuth } from "state/auth";
 import styled from "styled-components";
 import { toast } from "react-toastify";
-import ModalChangePassword from "components/Modal/ModalChangePassword";
 
 const Div = styled.div`
   margin: auto;
@@ -45,7 +44,9 @@ const SettingsScreen = () => {
     changeName(newName)
       .then(() => {
         setUser({ ...user, name: newName });
+        toast.success("Name changed successfully");
       })
+      .catch(() => toast.error("Something went wrong, please try again"))
       .finally(() => {
         setIsLoading(false);
       });
@@ -53,8 +54,6 @@ const SettingsScreen = () => {
 
   return (
     <Div>
-      {/* <ModalChangePassword /> */}
-      <button onClick={() => toast.error("Yay")}>YAY</button>
       <Spacer px={60} />
       <Typography variant="h2">My Account Settings</Typography>
       <Spacer px={60} />

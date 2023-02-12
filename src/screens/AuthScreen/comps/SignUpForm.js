@@ -66,6 +66,7 @@ export const SignUpForm = () => {
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
+        InputLabelProps={{ shrink: true }}
       />
       <Spacer px={20} />
       <TextField
@@ -77,6 +78,7 @@ export const SignUpForm = () => {
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        InputLabelProps={{ shrink: true }}
       />
       <Spacer px={20} />
       <TextField
@@ -87,6 +89,7 @@ export const SignUpForm = () => {
         required
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        InputLabelProps={{ shrink: true }}
       />
       <Spacer px={20} />
       <TextField
@@ -97,6 +100,7 @@ export const SignUpForm = () => {
         required
         value={repeatPassword}
         onChange={(e) => setRepeatPassword(e.target.value)}
+        InputLabelProps={{ shrink: true }}
       />
       {error && (
         <>

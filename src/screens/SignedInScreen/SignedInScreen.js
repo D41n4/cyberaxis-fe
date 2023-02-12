@@ -4,6 +4,7 @@ import { useAuth } from "state/auth";
 import Layout from "components/Layout";
 import HomeScreen from "screens/HomeScreen";
 import SettingsScreen from "screens/SettingsScreen";
+import PreferencesScreen from "screens/PreferencesScreen";
 
 function SignedInScreen() {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ function SignedInScreen() {
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/my-account" element={<SettingsScreen />} />
+        <Route path="/preferences" element={<PreferencesScreen />} />
       </Routes>
     </Layout>
   );
