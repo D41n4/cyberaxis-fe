@@ -29,3 +29,18 @@ export const deleteTrustedAccount = (id) => {
     method: "DELETE",
   }).then((res) => res.data.data);
 };
+
+export const changePassword = (existingPassword, newPassword) => {
+  return client({
+    url: "/user/change-password",
+    method: "PUT",
+    data: { existingPassword, newPassword },
+  }).then((res) => res.data.data);
+};
+
+export const deleteAccount = () => {
+  return client({
+    url: "/user/delete-account",
+    method: "DELETE",
+  }).then((res) => res.data.data);
+};

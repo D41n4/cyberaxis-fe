@@ -3,7 +3,12 @@ import styled from "styled-components";
 import { TextField, Button, Typography } from "@mui/material";
 import Spacer from "components/Spacer/Spacer";
 import { makeSignUp } from "api/auth";
-import { emailRegex, passwordErr, passwordRegex, userNameRegex } from "../misc";
+import {
+  emailRegex,
+  passwordErr,
+  passwordRegex,
+  userNameRegex,
+} from "../../../util/misc";
 import { useAuth } from "state/auth";
 import { setToken } from "api/utils";
 

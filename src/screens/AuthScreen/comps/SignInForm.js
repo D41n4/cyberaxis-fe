@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TextField, Button, Typography } from "@mui/material";
 import Spacer from "components/Spacer/Spacer";
 import { makeLogin } from "api/auth";
-import { passwordErr, passwordRegex } from "../misc";
+import { passwordErr, passwordRegex } from "../../../util/misc";
 import { useAuth } from "state/auth";
 import { setToken } from "api/utils";
 

@@ -2,7 +2,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import { changeName, getTrustedAccounts } from "api/user";
 import Spacer from "components/Spacer";
 import { useEffect, useState } from "react";
-import { userNameRegex } from "screens/AuthScreen/misc";
+import { userNameRegex } from "util/misc";
 import { useAuth } from "state/auth";
 import styled from "styled-components";
 import { toast } from "react-toastify";

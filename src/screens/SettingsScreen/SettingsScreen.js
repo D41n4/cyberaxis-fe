@@ -2,10 +2,12 @@ import { Button, TextField, Typography } from "@mui/material";
 import { changeName } from "api/user";
 import Spacer from "components/Spacer";
 import { useState } from "react";
-import { userNameRegex } from "screens/AuthScreen/misc";
+import { userNameRegex } from "util/misc";
 import { useAuth } from "state/auth";
 import styled from "styled-components";
 import { toast } from "react-toastify";
+import ModalChangePassword from "components/Modal/ModalChangePassword";
+import ModalDeleteAccount from "components/Modal/ModalDeleteAccount";
 
 const Div = styled.div`
   margin: auto;
@@ -37,8 +39,9 @@ const SettingsScreen = () => {
   const { user, setUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(user.name);
+  const [isPswModalOpen, setIsPswModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  //   TODO add err handling
   const handleChangeName = () => {
     setIsLoading(true);
     changeName(newName)
@@ -53,49 +56,68 @@ const SettingsScreen = () => {
   };
 
   return (
-    <Div>
-      <Spacer px={60} />
-      <Typography variant="h2">My Account Settings</Typography>
-      <Spacer px={60} />
-      <div className="row">
-        <Typography>Email:</Typography>
-        <Typography>{user.email}</Typography>
-      </div>
-      <Spacer px={30} />
-      <div className="row">
-        <Typography>Name:</Typography>
+    <>
+      {isPswModalOpen && (
+        <ModalChangePassword onClose={() => setIsPswModalOpen(false)} />
+      )}
 
-        <TextField
-          size="small"
-          value={newName}
-          onChange={(e) => setNewName(e.target.value)}
-        />
-      </div>
-      <Spacer px={30} />
-      <div className="row">
-        <div />
-        <div className="row__end">
-          <Button
-            fullWidth
-            variant="contained"
-            disabled={
-              user.name === newName || !userNameRegex.test(newName) || isLoading
-            }
-            onClick={handleChangeName}
-          >
-            Save
-          </Button>
+      {isDeleteModalOpen && (
+        <ModalDeleteAccount onClose={() => setIsDeleteModalOpen(false)} />
+      )}
+      <Div>
+        <Spacer px={60} />
+        <Typography variant="h2">My Account Settings</Typography>
+        <Spacer px={60} />
+        <div className="row">
+          <Typography>Email:</Typography>
+          <Typography>{user.email}</Typography>
         </div>
-      </div>
-      <Spacer px={30} />
-      <Typography className="cta" fontWeight="bold">
-        Change password
-      </Typography>
-      <Spacer px={10} />
-      <Typography className="cta" fontWeight="bold">
-        Delete account
-      </Typography>
-    </Div>
+        <Spacer px={30} />
+        <div className="row">
+          <Typography>Name:</Typography>
+
+          <TextField
+            size="small"
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+          />
+        </div>
+        <Spacer px={30} />
+        <div className="row">
+          <div />
+          <div className="row__end">
+            <Button
+              fullWidth
+              variant="contained"
+              disabled={
+                user.name === newName ||
+                !userNameRegex.test(newName) ||
+                isLoading
+              }
+              onClick={handleChangeName}
+            >
+              Save
+            </Button>
+          </div>
+        </div>
+        <Spacer px={30} />
+        <Typography
+          onClick={() => setIsPswModalOpen(true)}
+          className="cta"
+          fontWeight="bold"
+        >
+          Change password
+        </Typography>
+        <Spacer px={10} />
+        <Typography
+          onClick={() => setIsDeleteModalOpen(true)}
+          className="cta"
+          fontWeight="bold"
+        >
+          Delete account
+        </Typography>
+      </Div>
+    </>
   );
 };
 
