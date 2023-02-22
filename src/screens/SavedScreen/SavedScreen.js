@@ -1,18 +1,21 @@
 import styled from "styled-components";
 import Spacer from "components/Spacer";
-import { Button, TextField } from "@mui/material";
-import { getTweets } from "api/tweets";
+import { Typography } from "@mui/material";
+import { getSavedTweets } from "api/tweets";
 import { useEffect, useState } from "react";
 import Tweet from "components/Tweet";
-import { HashTags } from "./comps";
 
-const Div = styled.div``;
+const Div = styled.div`
+  h2 {
+    font-size: 28px;
+  }
+`;
 
-function HomeScreen() {
+function SavedScreen() {
   const [tweets, setTweets] = useState([]);
 
   const handleGetTweets = () => {
-    getTweets().then((res) => setTweets(res));
+    getSavedTweets().then((res) => setTweets(res));
   };
 
   useEffect(() => {
@@ -21,8 +24,7 @@ function HomeScreen() {
 
   return (
     <Div>
-      <HashTags />
-
+      <Typography variant="h2">Saved Tweets</Typography>
       <Spacer px={50} />
 
       {tweets.map((el) => (
@@ -42,4 +44,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen;
+export default SavedScreen;

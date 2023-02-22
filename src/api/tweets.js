@@ -5,23 +5,21 @@ export const topHashtags = () => {
   return client({
     url: "/tweets/top-hashtags",
     method: "GET",
-  }).then((res) => res.data);
+  }).then((res) => res.data.data);
 };
 
 // ----------------------------------------------------
-// @params searchString: string
-export const testSearchTweets = (searchString) => {
+export const getTweets = () => {
   return client({
-    url: `/tweets/test/tweets/search?searchString=${searchString}`,
+    url: `/tweets`,
     method: "GET",
-  }).then((res) => res.data);
+  }).then((res) => res.data.data);
 };
 
 // ----------------------------------------------------
-// @params searchString: string
-export const testQueryTweets = (searchString) => {
+export const getSavedTweets = () => {
   return client({
-    url: `/tweets/test/tweets/query?searchString=${searchString}`,
+    url: `/tweets/saved`,
     method: "GET",
-  }).then((res) => res.data);
+  }).then((res) => res.data.data);
 };

@@ -44,3 +44,11 @@ export const deleteAccount = () => {
     method: "DELETE",
   }).then((res) => res.data.data);
 };
+
+export const favouriteTweet = (tweetId) => {
+  return client({
+    url: "/user/favourite-tweet",
+    method: "PUT",
+    data: { tweetId },
+  }).then((res) => res.data.data);
+};
