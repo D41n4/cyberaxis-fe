@@ -3,62 +3,10 @@ import Spacer from "components/Spacer";
 import styled from "styled-components";
 import { Star, StarBorder, CheckCircle } from "@mui/icons-material";
 import { favouriteTweet } from "api/user";
-
-// const trustedAccounts = [
-//   {
-//     id: "2778002300",
-//     name: "CPO Magazine",
-//   },
-//   {
-//     id: "209811713",
-//     name: "The Hacker News",
-//   },
-//   {
-//     id: "3819701",
-//     name: "ZDNET",
-//   },
-//   {
-//     id: "29415843",
-//     name: "Infosecurity Magazine",
-//   },
-//   {
-//     id: "621583",
-//     name: "BBCTech",
-//   },
-//   {
-//     id: "5402612",
-//     name: "BBC Breaking News",
-//   },
-//   {
-//     id: "22873424",
-//     name: "CIO Online",
-//   },
-//   {
-//     id: "24682806",
-//     name: "CSO Online",
-//   },
-//   {
-//     id: "18066440",
-//     name: "CISA Cyber",
-//   },
-//   {
-//     id: "41258937",
-//     name: "Security Week",
-//   },
-//   {
-//     id: "4210241608",
-//     name: "NCSC UK",
-//   },
-//   {
-//     id: "713973",
-//     name: "IT Pro",
-//   },
-// ];
-
-// const trustedIds = trustedAccounts.map((el) => el.id);
+import formatDate from "util/formatDate";
 
 const StyledCheckCircle = styled(CheckCircle)`
-  color: ${({ isTrusted }) => (isTrusted ? "green" : "purple")};
+  color: ${({ isTrusted }) => (isTrusted ? "green" : "gray")};
 `;
 
 const StyledStarBorder = styled(StarBorder)`
@@ -137,11 +85,12 @@ function Tweet(props) {
     favouriteTweet(props.id).then(() => props.handleGetTweets());
   };
 
+  // console.log("imageSrc", imageSrc);
   return (
     <Div>
       <div className="details">
         <div className="details__image">
-          <img src={imageSrc} alt="" />
+          <img src={imageSrc || "/placeholder.png"} alt="" />
         </div>
         <Typography>{props.text}</Typography>
         <div className="details__badges">
@@ -150,8 +99,11 @@ function Tweet(props) {
       </div>
       <Spacer px={10} />
       <div className="actions">
-        {/* TODO */}
-        {`_id: ${props.id} authorId: ${props.authorId} created_at: ${props.created_at}`}
+        <Typography>Author ID: {props.authorId}</Typography>
+        <Spacer px={20} horizontal />
+        <Typography>{formatDate(props.created_at)}</Typography>
+        <Spacer px={20} horizontal />
+        {/* TODO check no follow stuff */}
         <a href={url} target="_blank" rel="nofollow">
           <Button variant="contained">VIEW URL</Button>
         </a>

@@ -1,3 +1,5 @@
+import { encodeQueryParams } from "./utils";
+
 const { client } = require("./client");
 
 // ----------------------------------------------------
@@ -9,9 +11,10 @@ export const topHashtags = () => {
 };
 
 // ----------------------------------------------------
-export const getTweets = () => {
+export const getTweets = ({ selectedHashtags }) => {
+  console.log(`/tweets${encodeQueryParams({ selectedHashtags })}`);
   return client({
-    url: `/tweets`,
+    url: `/tweets${encodeQueryParams({ selectedHashtags })}`,
     method: "GET",
   }).then((res) => res.data.data);
 };

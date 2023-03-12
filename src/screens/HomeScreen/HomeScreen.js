@@ -1,27 +1,42 @@
 import styled from "styled-components";
 import Spacer from "components/Spacer";
-import { Button, TextField } from "@mui/material";
 import { getTweets } from "api/tweets";
 import { useEffect, useState } from "react";
 import Tweet from "components/Tweet";
-import { HashTags } from "./comps";
+import { Filters, HashTags } from "./comps";
 
 const Div = styled.div``;
 
 function HomeScreen() {
   const [tweets, setTweets] = useState([]);
+  const [selectedHashtags, setSelectedHashtags] = useState([]);
 
   const handleGetTweets = () => {
-    getTweets().then((res) => setTweets(res));
+    getTweets({ selectedHashtags }).then((res) => setTweets(res));
+  };
+
+  const manageHashatags = (tag) => {
+    if (selectedHashtags.includes(tag)) {
+      setSelectedHashtags(selectedHashtags.filter((el) => el !== tag));
+    } else {
+      setSelectedHashtags([...selectedHashtags, tag]);
+    }
   };
 
   useEffect(() => {
     handleGetTweets();
-  }, []);
+  }, [selectedHashtags]);
 
   return (
     <Div>
-      <HashTags />
+      <HashTags
+        manageHashatags={manageHashatags}
+        selectedHashtags={selectedHashtags}
+      />
+
+      <Spacer px={50} />
+
+      <Filters />
 
       <Spacer px={50} />
 

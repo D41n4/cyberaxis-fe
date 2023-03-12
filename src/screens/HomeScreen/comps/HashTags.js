@@ -1,28 +1,30 @@
 import { topHashtags } from "api/tweets";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { colors } from "util/theme";
 
 const Div = styled.div`
   border: 1px solid red;
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  grid-gap: 10px; */
   display: flex;
   flex-wrap: wrap;
-
-  .tag {
-    padding: 5px 12px;
-    margin: 4px 8px;
-    background-color: gray;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
 `;
 
-export function HashTags() {
+const Tag = styled.div`
+  padding: 5px 12px;
+  margin: 4px 8px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+
+  background-color: ${({ isSelected }) =>
+    isSelected ? colors.PRIMARY : colors.HIGHLIGHT};
+`;
+
+export function HashTags({ manageHashatags, selectedHashtags }) {
   const [hashTags, setHashTags] = useState([]);
 
   useEffect(() => {
@@ -34,9 +36,13 @@ export function HashTags() {
   return (
     <Div>
       {hashTags.map((el, idx) => (
-        <div key={el._id} className="tag">
-          #{idx + 1} {el._id}
-        </div>
+        <Tag
+          key={el.hashtag}
+          onClick={() => manageHashatags(el.hashtag)}
+          isSelected={selectedHashtags.includes(el.hashtag)}
+        >
+          #{idx + 1} {el.hashtag}
+        </Tag>
       ))}
     </Div>
   );
