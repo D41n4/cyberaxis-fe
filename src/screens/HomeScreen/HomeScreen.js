@@ -27,6 +27,8 @@ function HomeScreen() {
     handleGetTweets();
   }, [selectedHashtags]);
 
+  // console.log(tweets);
+
   return (
     <Div>
       <HashTags
@@ -51,6 +53,7 @@ function HomeScreen() {
           isFavourite={el.isFavourite}
           handleGetTweets={handleGetTweets}
           created_at={el.created_at}
+          entityList={el.entityList}
         />
       ))}
     </Div>

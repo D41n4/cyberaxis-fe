@@ -38,6 +38,7 @@ function SavedScreen() {
           isFavourite={el.isFavourite}
           handleGetTweets={handleGetTweets}
           created_at={el.created_at}
+          entityList={el.entityList}
         />
       ))}
     </Div>

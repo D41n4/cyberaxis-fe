@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { Star, StarBorder, CheckCircle } from "@mui/icons-material";
 import { favouriteTweet } from "api/user";
 import formatDate from "util/formatDate";
+import CoronavirusIcon from "@mui/icons-material/Coronavirus";
+import EngineeringIcon from "@mui/icons-material/Engineering";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import Tooltip from "@mui/material/Tooltip";
 
 const StyledCheckCircle = styled(CheckCircle)`
   color: ${({ isTrusted }) => (isTrusted ? "green" : "gray")};
@@ -20,7 +25,7 @@ const StyledStar = styled(Star)`
 `;
 
 const Div = styled.div`
-  border: 1px solid red;
+  border: 1px solid gray;
   max-width: 800px;
   margin: auto;
   margin-bottom: 10px;
@@ -37,7 +42,7 @@ const Div = styled.div`
       align-items: center;
       img {
         object-fit: cover;
-        max-width: 100%;
+        min-width: 100%;
         height: 150px;
       }
     }
@@ -53,7 +58,12 @@ const Div = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /* border: 1px solid green; */
+
+    .actions__entities {
+      display: flex;
+      align-items: center;
+      margin-right: auto;
+    }
 
     a {
       text-decoration: none;
@@ -68,6 +78,48 @@ const Div = styled.div`
     }
   }
 `;
+
+// MALWARE
+// HACKER_GROUPS
+// ORGANISATIONS
+// OS
+
+const getEntityIcons = (entityList) => {
+  const list = [];
+
+  entityList?.forEach((entity) => {
+    if (entity === "MALWARE") {
+      list.push(
+        <Tooltip title="Malware" placement="top">
+          <CoronavirusIcon />
+        </Tooltip>
+      );
+    }
+    if (entity === "HACKER_GROUPS") {
+      list.push(
+        <Tooltip title="Hacker groups" placement="top">
+          <EngineeringIcon />
+        </Tooltip>
+      );
+    }
+    if (entity === "ORGANISATIONS") {
+      list.push(
+        <Tooltip title="Organisations" placement="top">
+          <AccountBalanceIcon />
+        </Tooltip>
+      );
+    }
+    if (entity === "OS") {
+      list.push(
+        <Tooltip title="Operating system" placement="top">
+          <TerminalIcon />
+        </Tooltip>
+      );
+    }
+  });
+
+  return list;
+};
 
 function Tweet(props) {
   let imageSrc = "";
@@ -85,7 +137,6 @@ function Tweet(props) {
     favouriteTweet(props.id).then(() => props.handleGetTweets());
   };
 
-  // console.log("imageSrc", imageSrc);
   return (
     <Div>
       <div className="details">
@@ -99,6 +150,9 @@ function Tweet(props) {
       </div>
       <Spacer px={10} />
       <div className="actions">
+        <div className="actions__entities">
+          Entities found: {getEntityIcons(props.entityList)}
+        </div>
         <Typography>Author ID: {props.authorId}</Typography>
         <Spacer px={20} horizontal />
         <Typography>{formatDate(props.created_at)}</Typography>
