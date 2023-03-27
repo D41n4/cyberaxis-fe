@@ -11,10 +11,17 @@ export const topHashtags = () => {
 };
 
 // ----------------------------------------------------
-export const getTweets = ({ selectedHashtags }) => {
-  console.log(`/tweets${encodeQueryParams({ selectedHashtags })}`);
+export const getTweets = ({
+  selectedHashtags,
+  selectedEntities,
+  dateFilter,
+}) => {
   return client({
-    url: `/tweets${encodeQueryParams({ selectedHashtags })}`,
+    url: `/tweets${encodeQueryParams({
+      selectedHashtags,
+      selectedEntities,
+      dateFilter,
+    })}`,
     method: "GET",
   }).then((res) => res.data.data);
 };

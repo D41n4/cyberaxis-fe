@@ -9,6 +9,7 @@ import EngineeringIcon from "@mui/icons-material/Engineering";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Tooltip from "@mui/material/Tooltip";
+import SystemSecurityUpdateGoodIcon from "@mui/icons-material/SystemSecurityUpdateGood";
 
 const StyledCheckCircle = styled(CheckCircle)`
   color: ${({ isTrusted }) => (isTrusted ? "green" : "gray")};
@@ -83,6 +84,7 @@ const Div = styled.div`
 // HACKER_GROUPS
 // ORGANISATIONS
 // OS
+//SOFTWARE
 
 const getEntityIcons = (entityList) => {
   const list = [];
@@ -112,6 +114,13 @@ const getEntityIcons = (entityList) => {
     if (entity === "OS") {
       list.push(
         <Tooltip title="Operating system" placement="top">
+          <SystemSecurityUpdateGoodIcon />
+        </Tooltip>
+      );
+    }
+    if (entity === "SOFTWARE") {
+      list.push(
+        <Tooltip title="Software" placement="top">
           <TerminalIcon />
         </Tooltip>
       );
