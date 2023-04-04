@@ -10,6 +10,7 @@ import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import Tooltip from "@mui/material/Tooltip";
 import SystemSecurityUpdateGoodIcon from "@mui/icons-material/SystemSecurityUpdateGood";
+import { colors } from "util/theme";
 
 const StyledCheckCircle = styled(CheckCircle)`
   color: ${({ isTrusted }) => (isTrusted ? "green" : "gray")};
@@ -26,11 +27,14 @@ const StyledStar = styled(Star)`
 `;
 
 const Div = styled.div`
-  border: 1px solid gray;
+  border: 1px solid ${colors.PRIMARY};
   max-width: 800px;
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 10px;
+  border-radius: 6px;
+  background-color: white;
+  filter: drop-shadow(0px 0px 5px ${colors.HIGHLIGHT});
 
   .details {
     display: grid;

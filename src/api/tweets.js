@@ -15,12 +15,14 @@ export const getTweets = ({
   selectedHashtags,
   selectedEntities,
   dateFilter,
+  searchString,
 }) => {
   return client({
     url: `/tweets${encodeQueryParams({
       selectedHashtags,
       selectedEntities,
       dateFilter,
+      searchString,
     })}`,
     method: "GET",
   }).then((res) => res.data.data);

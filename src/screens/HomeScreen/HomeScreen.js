@@ -11,12 +11,16 @@ function HomeScreen() {
   const [tweets, setTweets] = useState([]);
   const [selectedHashtags, setSelectedHashtags] = useState([]);
   const [selectedEntities, setSelectedEntities] = useState([]);
+  const [searchString, setSearchString] = useState("");
   const [dateFilter, setDateFilter] = useState(0);
 
   const handleGetTweets = () => {
-    getTweets({ selectedHashtags, selectedEntities, dateFilter }).then((res) =>
-      setTweets(res)
-    );
+    getTweets({
+      selectedHashtags,
+      selectedEntities,
+      dateFilter,
+      searchString,
+    }).then((res) => setTweets(res));
   };
 
   const manageHashatags = (tag) => {
@@ -37,9 +41,7 @@ function HomeScreen() {
 
   useEffect(() => {
     handleGetTweets();
-  }, [selectedHashtags, selectedEntities, dateFilter]);
-
-  console.log("tweets", tweets);
+  }, [selectedHashtags, selectedEntities, dateFilter, searchString]);
 
   return (
     <Div>
@@ -47,12 +49,14 @@ function HomeScreen() {
         manageHashatags={manageHashatags}
         selectedHashtags={selectedHashtags}
       />
-      <Spacer px={10} />
+      <Spacer px={20} />
       <Filters
         manageEntities={manageEntities}
         selectedEntities={selectedEntities}
         dateFilter={dateFilter}
         setDateFilter={setDateFilter}
+        searchString={searchString}
+        setSearchString={setSearchString}
       />
 
       <Spacer px={50} />

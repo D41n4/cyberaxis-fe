@@ -22,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "audit": "yarn-audit-fix"
+    "audit": "yarn-audit-fix",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "9",
     "yarn-audit-fix": "^9.3.9"
   }
 }

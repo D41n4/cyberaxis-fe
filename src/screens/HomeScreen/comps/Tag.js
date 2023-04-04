@@ -12,5 +12,5 @@ export const Tag = styled.div`
   color: white;
 
   background-color: ${({ isSelected }) =>
-    isSelected ? colors.PRIMARY : colors.HIGHLIGHT};
+    !isSelected ? colors.PRIMARY : colors.HIGHLIGHT};
 `;
