@@ -39,6 +39,7 @@ const AuthScreen = () => {
         <Button
           variant={!formType ? "contained" : "outlined"}
           onClick={() => setFormType(false)}
+          data-cy="sign-up-button"
         >
           Sign up
         </Button>

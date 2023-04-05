@@ -65,6 +65,7 @@ export const SignUpForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <TextField
+        data-cy="sign-up-name"
         size="small"
         label="Name"
         fullWidth
@@ -75,6 +76,7 @@ export const SignUpForm = () => {
       />
       <Spacer px={20} />
       <TextField
+        data-cy="sign-up-email"
         size="small"
         label="Email"
         type="email"
@@ -87,6 +89,7 @@ export const SignUpForm = () => {
       />
       <Spacer px={20} />
       <TextField
+        data-cy="sign-up-password"
         size="small"
         label="Password"
         type="password"
@@ -98,6 +101,7 @@ export const SignUpForm = () => {
       />
       <Spacer px={20} />
       <TextField
+        data-cy="sign-up-repeat-password"
         size="small"
         label="Repeat password"
         type="password"
@@ -110,13 +114,14 @@ export const SignUpForm = () => {
       {error && (
         <>
           <Spacer px={20} />
-          <Typography variant="subtitle2" color="error">
+          <Typography variant="subtitle2" color="error" data-cy="error-text">
             {error}
           </Typography>
         </>
       )}
       <Spacer px={20} />
       <Button
+        data-cy="sign-up-submit"
         variant="contained"
         fullWidth
         type="submit"
