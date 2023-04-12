@@ -86,9 +86,15 @@ export const SignUpForm = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         InputLabelProps={{ shrink: true }}
+        inputProps={{
+          form: {
+            autocomplete: "off",
+          },
+        }}
       />
       <Spacer px={20} />
       <TextField
+        autoComplete="new-password"
         data-cy="sign-up-password"
         size="small"
         label="Password"
@@ -98,6 +104,11 @@ export const SignUpForm = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         InputLabelProps={{ shrink: true }}
+        inputProps={{
+          form: {
+            autocomplete: "off",
+          },
+        }}
       />
       <Spacer px={20} />
       <TextField
@@ -110,6 +121,11 @@ export const SignUpForm = () => {
         value={repeatPassword}
         onChange={(e) => setRepeatPassword(e.target.value)}
         InputLabelProps={{ shrink: true }}
+        inputProps={{
+          form: {
+            autocomplete: "off",
+          },
+        }}
       />
       {error && (
         <>

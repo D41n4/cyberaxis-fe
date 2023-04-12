@@ -21,7 +21,12 @@ export function NavBar() {
   return (
     <Nav>
       <Typography className="user-name">Welcome, {auth.user?.name}</Typography>
-      <Button variant="contained" onClick={makeLogout} size="small">
+      <Button
+        data-cy="logout-btn"
+        variant="contained"
+        onClick={makeLogout}
+        size="small"
+      >
         LOG OUT
       </Button>
     </Nav>

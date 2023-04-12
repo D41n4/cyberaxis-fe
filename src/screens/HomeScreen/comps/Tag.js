@@ -3,7 +3,7 @@ import { colors } from "util/theme";
 
 export const Tag = styled.div`
   padding: 2px 4px;
-  margin: 3px 4px;
+  margin: 3px 8px 3px 0;
   border-radius: 20px;
   display: flex;
   align-items: center;

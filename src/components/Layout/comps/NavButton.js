@@ -28,6 +28,7 @@ export function NavButton(props) {
 
   return (
     <Div
+      data-cy={props.dataCy}
       isActive={location.pathname === props.route}
       onClick={() => navigate(props.route)}
     >

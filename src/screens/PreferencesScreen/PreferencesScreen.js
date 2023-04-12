@@ -51,9 +51,10 @@ const PreferencesScreen = () => {
         />
       )}
       <Div>
-        <Spacer px={60} />
+        <Spacer px={40} />
         <Typography variant="h2">Trusted Twitter Accounts</Typography>
-        <Spacer px={60} />
+        <Typography>Lorem ipsum</Typography>
+        <Spacer px={30} />
         <div className="table">
           <TableRow id="ID" name="NAME" isDefault={null} isBold />
           {trustedAccounts.map((el, idx) => (

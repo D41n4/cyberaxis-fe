@@ -65,9 +65,9 @@ const SettingsScreen = () => {
         <ModalDeleteAccount onClose={() => setIsDeleteModalOpen(false)} />
       )}
       <Div>
-        <Spacer px={60} />
+        <Spacer px={40} />
         <Typography variant="h2">My Account Settings</Typography>
-        <Spacer px={60} />
+        <Spacer px={30} />
         <div className="row">
           <Typography>Email:</Typography>
           <Typography>{user.email}</Typography>

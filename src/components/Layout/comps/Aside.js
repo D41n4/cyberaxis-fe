@@ -17,18 +17,26 @@ const Div = styled.div`
 export function Aside() {
   return (
     <Div>
-      <NavButton label="Home" icon={<HomeIcon fontSize="small" />} route="/" />
       <NavButton
+        dataCy="nav-home-btn"
+        label="Home"
+        icon={<HomeIcon fontSize="small" />}
+        route="/"
+      />
+      <NavButton
+        dataCy="nav-preferences-btn"
         label="Preferences"
         icon={<SettingsIcon fontSize="small" />}
         route="/preferences"
       />
       <NavButton
+        dataCy="nav-saved-btn"
         label="Saved"
         icon={<StarIcon fontSize="small" />}
         route="/saved"
       />
       <NavButton
+        dataCy="nav-account-btn"
         label="My Account"
         icon={<PersonIcon fontSize="small" />}
         route="/my-account"

@@ -9,6 +9,11 @@ const Div = styled.div`
   h2 {
     font-size: 28px;
   }
+
+  .headerContainer {
+    max-width: 800px;
+    margin: auto;
+  }
 `;
 
 function SavedScreen() {
@@ -24,8 +29,12 @@ function SavedScreen() {
 
   return (
     <Div>
-      <Typography variant="h2">Saved Tweets</Typography>
-      <Spacer px={50} />
+      <Spacer px={40} />
+      <div className="headerContainer">
+        <Typography variant="h2">Saved Tweets</Typography>
+        <Typography>Lorem ipsum</Typography>
+      </div>
+      <Spacer px={30} />
 
       {tweets.map((el) => (
         <Tweet

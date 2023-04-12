@@ -43,6 +43,7 @@ export const SignInForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <TextField
+        data-cy="sign-in-email"
         size="small"
         label="Email"
         type="email"
@@ -54,6 +55,7 @@ export const SignInForm = () => {
       />
       <Spacer px={20} />
       <TextField
+        data-cy="sign-in-password"
         size="small"
         label="Password"
         type="password"
@@ -71,8 +73,10 @@ export const SignInForm = () => {
           </Typography>
         </>
       )}
+
       <Spacer px={20} />
       <Button
+        data-cy="sign-in-button"
         variant="contained"
         fullWidth
         type="submit"

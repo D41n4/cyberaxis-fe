@@ -3,12 +3,16 @@ import { topHashtags } from "api/tweets";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Tag } from "./Tag";
+import Spacer from "components/Spacer/Spacer";
 
 const Div = styled.div`
   /* border: 1px solid gray; */
-  display: grid;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 0 15px;
+  .grid-container {
+    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 export function HashTags({ manageHashatags, selectedHashtags }) {
@@ -21,9 +25,10 @@ export function HashTags({ manageHashatags, selectedHashtags }) {
   }, []);
 
   return (
-    <>
+    <Div>
+      <Spacer px={10} />
       <Typography fontWeight={500}>Filter by hashtags:</Typography>
-      <Div>
+      <div className="grid-container">
         {hashTags.map((el, idx) => (
           <Tag
             key={el.hashtag}
@@ -35,7 +40,7 @@ export function HashTags({ manageHashatags, selectedHashtags }) {
             </Typography>
           </Tag>
         ))}
-      </Div>
-    </>
+      </div>
+    </Div>
   );
 }
