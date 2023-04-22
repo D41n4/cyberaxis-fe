@@ -33,7 +33,7 @@ const Div = styled.div`
 
 const Base = (props) => {
   return (
-    <Div onClick={props.onClose}>
+    <Div>
       <div
         className="wrapper"
         onClick={(e) => {

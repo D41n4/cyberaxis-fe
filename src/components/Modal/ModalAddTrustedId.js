@@ -14,14 +14,30 @@ const Div = styled.div`
     display: flex;
     justify-content: flex-end;
   }
+
+  .error {
+    color: red;
+    font-size: 14px;
+  }
 `;
 
 const ModalAddTrustedId = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [id, setId] = useState("");
   const [name, setName] = useState("");
+  const [err, setErr] = useState("");
 
   const handleAdd = () => {
+    if (name.length > 15) {
+      setErr("Name must be less than 15 characters");
+      return;
+    }
+    if (id.length > 30) {
+      setErr("ID must be less than 30 characters");
+      return;
+    }
+
+    setErr("");
     setIsLoading(true);
     addTrustedAccount(id, name)
       .then(() => {
@@ -54,9 +70,13 @@ const ModalAddTrustedId = (props) => {
           label="Name"
           fullWidth
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
           InputLabelProps={{ shrink: true }}
         />
+        {/* Shroten version of if clause */}
+        {err && <span className="error">{err}</span>}
         <Spacer px={20} />
         <div className="btn-container">
           <Button

@@ -27,7 +27,7 @@ export function HashTags({ manageHashatags, selectedHashtags }) {
   return (
     <Div>
       <Spacer px={10} />
-      <Typography fontWeight={500}>Filter by hashtags:</Typography>
+      <Typography fontWeight={500}>Filter by popular hashtags:</Typography>
       <div className="grid-container">
         {hashTags.map((el, idx) => (
           <Tag

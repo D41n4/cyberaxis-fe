@@ -13,6 +13,7 @@
     "cypress": "^12.9.0",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
+    "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
@@ -23,7 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "audit": "yarn-audit-fix",
+    "audit:fix": "yarn-audit-fix",
     "cy:open": "cypress open",
     "cy:run": "cypress run"
   },

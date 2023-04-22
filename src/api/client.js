@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAuthHeaders, makeLogout } from "./utils";
+import { getAuthHeaders } from "./utils";
 
 export const client = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -12,21 +12,10 @@ export const client = axios.create({
 client.interceptors.request.use((request) => {
   const authHeaders = getAuthHeaders();
 
-  request.headers = {
+  request.headers = request.headers = {
     ...request.headers,
     ...authHeaders,
   };
 
   return request;
 });
-
-client.interceptors.response.use(
-  (response) => response,
-  (err) => {
-    if (err.response?.status === 401) {
-      makeLogout();
-    }
-
-    return Promise.reject(err.response?.data);
-  }
-);

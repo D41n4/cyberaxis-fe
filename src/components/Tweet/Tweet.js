@@ -54,8 +54,13 @@ const Div = styled.div`
 
     .details__badges {
       display: flex;
+      flex-direction: column;
       justify-items: center;
       padding-top: 10px;
+      gap: 5px;
+      .details__badges__tw-link {
+        cursor: pointer;
+      }
     }
   }
 
@@ -158,7 +163,16 @@ function Tweet(props) {
         </div>
         <Typography>{props.text}</Typography>
         <div className="details__badges">
-          <StyledCheckCircle isTrusted={props.isTrusted} />
+          <Tooltip
+            title={props.isTrusted ? "Trusted TODO" : "Not trusted TODO"}
+            placement="top"
+            arrow
+          >
+            <StyledCheckCircle isTrusted={props.isTrusted} />
+          </Tooltip>
+          <div className="details__badges__tw-link">
+            <img src="twitter-logo.png" alt="" />
+          </div>
         </div>
       </div>
       <Spacer px={10} />
@@ -171,7 +185,7 @@ function Tweet(props) {
         <Typography>{formatDate(props.created_at)}</Typography>
         <Spacer px={20} horizontal />
         {/* TODO check no follow stuff */}
-        <a href={url} target="_blank" rel="nofollow">
+        <a href={url} target="_blank" rel="nofollow noreferrer">
           <Button variant="contained">VIEW URL</Button>
         </a>
         <div className="actions__saved">

@@ -24,16 +24,16 @@ export function Aside() {
         route="/"
       />
       <NavButton
-        dataCy="nav-preferences-btn"
-        label="Preferences"
-        icon={<SettingsIcon fontSize="small" />}
-        route="/preferences"
-      />
-      <NavButton
         dataCy="nav-saved-btn"
         label="Saved"
         icon={<StarIcon fontSize="small" />}
         route="/saved"
+      />
+      <NavButton
+        dataCy="nav-preferences-btn"
+        label="Preferences"
+        icon={<SettingsIcon fontSize="small" />}
+        route="/preferences"
       />
       <NavButton
         dataCy="nav-account-btn"

@@ -13,11 +13,15 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   .item {
-    margin-right: 40px;
+    margin: 0 20px;
   }
   .entities {
     display: flex;
   }
+`;
+
+const StyledSelect = styled(Select)`
+  width: 130px;
 `;
 
 const entityList = [
@@ -32,11 +36,17 @@ export function Filters({
   selectedEntities,
   dateFilter,
   setDateFilter,
+  sourceFilter,
+  setSourceFilter,
   searchString,
   setSearchString,
 }) {
-  const handleChange = (event) => {
+  const handleChangeDateFilter = (event) => {
     setDateFilter(event.target.value);
+  };
+
+  const handleChangeSourceFilter = (event) => {
+    setSourceFilter(event.target.value);
   };
 
   return (
@@ -46,12 +56,31 @@ export function Filters({
         <Typography fontWeight={500}>Filter by date:</Typography>
         <Spacer px={5} />
         <FormControl>
-          <Select size="small" value={dateFilter} onChange={handleChange}>
+          <StyledSelect
+            size="small"
+            value={dateFilter}
+            onChange={handleChangeDateFilter}
+          >
             <MenuItem value={0}>All time</MenuItem>
             <MenuItem value={1}>Last day</MenuItem>
             <MenuItem value={3}>Last 3 days</MenuItem>
             <MenuItem value={7}>Last week</MenuItem>
-          </Select>
+          </StyledSelect>
+        </FormControl>
+      </div>
+      <div className="item">
+        <Typography fontWeight={500}>Filter by source:</Typography>
+        <Spacer px={5} />
+        <FormControl>
+          <StyledSelect
+            size="small"
+            value={sourceFilter}
+            onChange={handleChangeSourceFilter}
+          >
+            <MenuItem value={0}>All</MenuItem>
+            <MenuItem value={1}>Trusted</MenuItem>
+            <MenuItem value={2}>Not trusted</MenuItem>
+          </StyledSelect>
         </FormControl>
       </div>
       {/* ENTITIES */}

@@ -33,16 +33,27 @@ const Div = styled.div`
       text-decoration: underline;
     }
   }
+
+  .error {
+    color: red;
+  }
 `;
 
 const SettingsScreen = () => {
   const { user, setUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [newName, setNewName] = useState(user.name);
+  const [err, setErr] = useState("");
   const [isPswModalOpen, setIsPswModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const handleChangeName = () => {
+    if (!userNameRegex.test(newName)) {
+      setErr("Name must contain 2-30 characters");
+      return;
+    }
+    setErr("");
+
     setIsLoading(true);
     changeName(newName)
       .then(() => {
@@ -82,6 +93,12 @@ const SettingsScreen = () => {
             onChange={(e) => setNewName(e.target.value)}
           />
         </div>
+        {err && (
+          <>
+            <Spacer px={10} />
+            <span className="error"> {err}</span>
+          </>
+        )}
         <Spacer px={30} />
         <div className="row">
           <div />

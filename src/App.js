@@ -9,6 +9,10 @@ import { useAuth } from "state/auth";
 function App() {
   const auth = useAuth();
 
+  // used to check auth object if empty and token exists
+  // if token exists, get user from backend and set it to auth object
+  // if token doesn't exist, make logout
+
   useEffect(() => {
     if (!auth.user && getToken()) {
       getAuthUser()
@@ -19,6 +23,8 @@ function App() {
     }
   }, [auth]);
 
+  // if auth object is empty and token exists, return null
+  // this is to prevent the app from rendering before the user is fetched from backend
   if (!auth.user && getToken()) return null;
 
   return (

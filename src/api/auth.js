@@ -17,9 +17,8 @@ export const makeSignUp = ({ name, email, password }) => {
 };
 
 export const getAuthUser = () => {
-  const path = `/auth/user`;
   return client({
+    url: `/auth/user`,
     method: "GET",
-    url: path,
   }).then((res) => res.data);
 };

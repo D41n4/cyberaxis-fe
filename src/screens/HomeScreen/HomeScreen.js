@@ -13,6 +13,7 @@ function HomeScreen() {
   const [selectedEntities, setSelectedEntities] = useState([]);
   const [searchString, setSearchString] = useState("");
   const [dateFilter, setDateFilter] = useState(0);
+  const [sourceFilter, setSourceFilter] = useState(0);
 
   const handleGetTweets = () => {
     getTweets({
@@ -20,6 +21,7 @@ function HomeScreen() {
       selectedEntities,
       dateFilter,
       searchString,
+      sourceFilter,
     }).then((res) => setTweets(res));
   };
 
@@ -41,7 +43,13 @@ function HomeScreen() {
 
   useEffect(() => {
     handleGetTweets();
-  }, [selectedHashtags, selectedEntities, dateFilter, searchString]);
+  }, [
+    selectedHashtags,
+    selectedEntities,
+    dateFilter,
+    searchString,
+    sourceFilter,
+  ]);
 
   return (
     <Div>
@@ -57,6 +65,8 @@ function HomeScreen() {
         setDateFilter={setDateFilter}
         searchString={searchString}
         setSearchString={setSearchString}
+        sourceFilter={sourceFilter}
+        setSourceFilter={setSourceFilter}
       />
 
       <Spacer px={50} />

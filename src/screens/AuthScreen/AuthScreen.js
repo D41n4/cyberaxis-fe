@@ -36,6 +36,7 @@ const Div = styled.div`
 
 const AuthScreen = () => {
   const [formType, setFormType] = useState(true);
+  // destructure user from useAuth
   const { user } = useAuth();
 
   const navigate = useNavigate();
