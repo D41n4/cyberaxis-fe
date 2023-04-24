@@ -53,7 +53,10 @@ function SavedScreen() {
       <Spacer px={40} />
       <div className="headerContainer">
         <Typography variant="h2">Saved Tweets</Typography>
-        <Typography>Lorem ipsum</Typography>
+        <Typography>
+          Here, you can find all your saved tweets. You can also download them
+          as a CSV file.
+        </Typography>
       </div>
 
       <div className="headerContainer headerContainer--right">

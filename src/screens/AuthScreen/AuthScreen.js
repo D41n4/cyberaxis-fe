@@ -56,7 +56,7 @@ const AuthScreen = () => {
         </Typography>
         <Spacer px={10} />
         <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Login or create an account to access latest Cybersecurity news
         </Typography>
         <Spacer px={30} />
         <ButtonGroup>

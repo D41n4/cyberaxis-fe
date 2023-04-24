@@ -53,7 +53,10 @@ const PreferencesScreen = () => {
       <Div>
         <Spacer px={40} />
         <Typography variant="h2">Trusted Twitter Accounts</Typography>
-        <Typography>Lorem ipsum</Typography>
+        <Typography>
+          This is a list of system default Twitter accounts. You can add your
+          own trusted Twitter accounts.
+        </Typography>
         <Spacer px={30} />
         <div className="table">
           <TableRow id="ID" name="NAME" isDefault={null} isBold />

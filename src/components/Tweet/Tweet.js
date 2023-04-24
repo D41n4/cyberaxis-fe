@@ -164,7 +164,11 @@ function Tweet(props) {
         <Typography>{props.text}</Typography>
         <div className="details__badges">
           <Tooltip
-            title={props.isTrusted ? "Trusted TODO" : "Not trusted TODO"}
+            title={
+              props.isTrusted
+                ? "Trusted Account"
+                : "Not from trusted Accounts List."
+            }
             placement="top"
             arrow
           >
