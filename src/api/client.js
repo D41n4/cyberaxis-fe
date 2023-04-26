@@ -19,3 +19,10 @@ client.interceptors.request.use((request) => {
 
   return request;
 });
+
+client.interceptors.response.use(
+  (response) => response,
+  async (err) => {
+    return await Promise.reject(err.response?.data);
+  }
+);
